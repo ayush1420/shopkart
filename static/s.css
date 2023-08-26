@@ -1,0 +1,84 @@
+.me .container {
+    border: 5px solid #aaa;
+    border-radius: 10px;
+    width: 300px;
+    max-height: 400px;
+    
+    position: relative;
+  }
+ .container .box {
+    border: 0px solid #ddd;
+    margin: 5px;
+    padding: 5px;
+    
+  }
+ .container .button-container {
+    
+    border: 20px ;
+    background-color: white;
+    padding: 10 px;
+    text-align: center;
+    
+  }
+ .container .button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+ .container .b{
+  overflow: auto;
+     border: 1px solid #ccc;
+    
+    
+    height: 100px;
+    
+    position: relative;
+  }
+ 
+ .container h1 {
+    background-color: white;
+    margin: 0;
+    padding: 5 px;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #ccc;
+  }
+  .b::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  .container::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  .me {
+    display: inline-block; 
+    margin-right: 10px; 
+  }
+  .box3{
+    border: 1px solid #ccc;
+    display: inline-block; 
+    padding: 5 px;
+    margin: 10px; 
+    width: 200px;
+    height: 65px;
+    position: relative;
+  }
+  .box1{
+    overflow-x: auto;
+    white-space: nowrap; 
+    text-align: center;
+    width: 1100px;
+    height: 150px;
+    margin: 10px; 
+  }
+  .box2{
+    overflow: auto;
+  }
+  .box3 .button{
+    position: relative;
+    margin: 10px; 
+  }
+  .box1::-webkit-scrollbar {
+    width: 0.5em;
+  }

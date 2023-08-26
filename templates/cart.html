@@ -1,0 +1,53 @@
+{% extends 'navbar.html' %}
+{% block content %}
+
+<h1>Shopping Cart</h1>
+    <br>
+    <br>
+    {% if cart_items %}
+    <table border="2px">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>unit</th>
+                <th>Quantity</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for item,coun in cart_items.items() %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>Rs.{{ item.rate }}</td>
+                <td>{% if item.unit==1 %}/kg
+                    {% elif item.unit==2 %}/L
+                    {% elif item.unit==3 %}/dozen
+                    {% elif item.unit==4 %}/item
+                    {% endif %}</td>
+                <td>{{ coun }}</td> 
+
+                <td><a href="{{ url_for('remove',pro=item.prod_id)}}" class="btn">Remove</a></td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total:</td>
+                <td colspan="4">Rs{{ total_cost }}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <a href="/checkout" class="button">Buy</a>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+
+
+
+
+
+
+{% endblock %}

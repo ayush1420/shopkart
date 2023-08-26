@@ -1,0 +1,50 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+
+
+<h1>Product Purchase Form</h1>
+    
+<form action="{{ url_for('add',pid=pro.prod_id)}}" method="POST">
+    <p> Availability:
+    {% if pro.quantity>0 %} In Stock
+    {% else %} Out of Stock
+    {% endif %}
+    </p>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" required oninput="calculateTotal()"><br><br>
+    
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" value="{{ pro.rate }}" step="0.01" readonly><br><br>
+    
+    <label for="total">Total:</label>
+    <input type="number" id="total" name="total" step="0.01" readonly><br><br>
+    
+    <button type="submit">Buy</button>
+
+    <script>
+        function calculateTotal() {
+            var quantity = parseFloat(document.getElementById('quantity').value);
+            var price = parseFloat(document.getElementById('price').value);
+            var total = quantity * price;
+            document.getElementById('total').value = total.toFixed(2);
+        }
+        
+        
+        calculateTotal();
+    </script>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+    <br>
+    <h2 style="text-align: center;">Welcome to Shopkart </h2>
+    <h3 style="text-align: center; color:blue"><u>Admin's Dashboard</u></h3>
+    <br>
+    <h2>
+        <a href="/category" ><i class="bi bi-file-earmark-plus-fill"></i> </a>
+    </h2>
+  
+
+{% for cat,products in ren.items() %}
+
+    <div class="me">
+    <div class="container">
+      <h1>{{ cat }}</h1>
+      
+      <div class="b">
+
+
+      {% for prod in products %}
+        <div class="box">
+          <p>{{ prod.name }}</p>
+          <!-- <a href="{{url_for('delp',pid=prod.prod_id)}}"  class="button">Delete</a> -->
+          <a href="{{ url_for('delp', pid=prod.prod_id) }}" class="button" onclick="return confirm('Are you sure you want to delete this product?');">
+           Delete</a>
+          <a href="{{url_for('pedit',pid=prod.prod_id)}}"  class="button">Edit</a>
+        </div>
+      {% endfor %}
+
+
+      </div>
+      <div class="button-container">
+        <a href="{{url_for('reg',name=cat)}}" class="button">Add</a>
+        <a href="{{url_for('cedit',name=cat)}}" class="button">Edit</a>
+        <a href="{{url_for('delc',name=cat)}}" class="button" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+      </div>
+      </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

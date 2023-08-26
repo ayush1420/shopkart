@@ -1,0 +1,260 @@
+openapi: 3.0.3
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  description: >-
+    
+  version: 1.0.11
+servers:
+  - url: http://192.168.29.108:8080
+tags:
+  - name: category
+    description: Operations related to categories
+  - name: product
+    description: Operations related to products
+  - name: admin
+    description: Operations related to admin users
+paths:
+  /api/category/{username}:
+    summary: Path for category CRUD operation
+    parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get category by username
+      description: Retrieve category details by username
+      operationId: getCategoryByUsername
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              examples:
+                category:
+                  value:
+                    name: Dairy
+                    id: 2
+    put:
+      summary: Update category name by username
+      description: Update the name of a category using the provided username
+      operationId: updateCategoryNameByUsername
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_name:
+                  type: string
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              examples:
+                updated_category:
+                  value:
+                    new_name: dairy
+    delete:
+      summary: Delete category by username
+      description: Delete a category based on the provided username
+      operationId: deleteCategoryByUsername
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Category successfully deleted
+          content:
+            application/json:
+              examples:
+                deleted_category:
+                  value: deleted_product
+    post:
+      summary: Create a new category
+      description: Create a new category with the provided name
+      operationId: createCategory
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        201:
+          description: Category successfully created
+          content:
+            application/json:
+              examples:
+                created_category:
+                  value:
+                    Cat_name: New Category
+                    Cat_id: 3
+  /api/product/{name}:
+    summary: Path for product CRUD operation
+    parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get product by name
+      description: Retrieve product details by name
+      operationId: getProductByName
+      tags:
+        - product
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              examples:
+                product:
+                  value:
+                    Name: Product Name
+                    Unit: kg
+                    Rate: 10.99
+                    Quantity: 100
+                    Cat_id: 1
+    put:
+      summary: Update product details by name
+      description: Update product details using the provided name
+      operationId: updateProductByName
+      tags:
+        - product
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Cat_id:
+                  type: integer
+                pname:
+                  type: string
+                unit:
+                  type: string
+                rate:
+                  type: number
+                quantity:
+                  type: integer
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              examples:
+                updated_product:
+                  value:
+                    Cat_id: 1
+                    pname: Updated Product
+                    unit: kg
+                    rate: 15.99
+                    quantity: 150
+    delete:
+      summary: Delete product by name
+      description: Delete a product based on the provided name
+      operationId: deleteProductByName
+      tags:
+        - product
+      responses:
+        204:
+          description: Product successfully deleted
+          content:
+            application/json:
+              examples:
+                deleted_product:
+                  value: Deleted Product
+    post:
+      summary: Create a new product
+      description: Create a new product with the provided details
+      operationId: createProduct
+      tags:
+        - product
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Cat_id:
+                  type: integer
+                pname:
+                  type: string
+                unit:
+                  type: string
+                rate:
+                  type: number
+                quantity:
+                  type: integer
+      responses:
+        201:
+          description: Product successfully created
+          content:
+            application/json:
+              examples:
+                created_product:
+                  value:
+                    Name: New Product
+                    Unit: unit
+  /api/admin/{name}:
+    summary: Path for admin user operation
+    parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get admin user by name
+      description: Retrieve admin user details by name
+      operationId: getAdminByName
+      tags:
+        - admin
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              examples:
+                admin:
+                  value:
+                    Admin_id: 1
+                    Name: Admin User
+                  
